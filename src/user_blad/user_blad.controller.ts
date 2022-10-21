@@ -1,11 +1,12 @@
 import { Body, Controller, Get,  Post,  UseGuards } from '@nestjs/common';
-import { User } from '@prisma/client';
 import { GetUser } from 'src/auth/decorator';
 import { JwtGuard } from 'src/auth/guard';
 import { UserDto } from './dto/user.dto';
 import { UserBladService } from './user_blad.service';
+import { ApiTags } from "@nestjs/swagger";
+import { User } from 'src/user/user.model';
 
-
+@ApiTags('User-Blad')
 @UseGuards(JwtGuard)
 @Controller('user_blad')
 export class UserBladController {
