@@ -24,6 +24,15 @@ model User {
   @@map("users")
 }
 
+model UserModel {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  firstName String?
+  lastName  String?
+}
+
 model Bookmark {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())

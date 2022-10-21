@@ -1,13 +1,15 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { emitWarning } from "process";
 import { UserService } from "./user.service";
 
+@ApiTags('User')
 @Controller('users')
 export class UserController{
 
     constructor(private readonly userService:UserService){}
     
-    @Post()
+    @Post('adduser')
     insertUser(
         @Body('name') name:String,
         @Body('age') age:number,
@@ -20,7 +22,7 @@ export class UserController{
        }
     }
 
-    @Get()
+    @Get('getallusers')
     getAllUsers(){
         return this.userService.getUsers();
     }
